@@ -1,0 +1,127 @@
+------ APUNTS GRÀFICS ------
+
+    Object Space............(xm,ym,zm,wm)
+        |
+        |   modeling transform (4x4)
+        |
+        V
+    World Space............(xa,ya,za,wa)
+        |
+        |   viewing transform (4x4)
+        |
+        V
+    Eye Space............(xe,ye,ze,we)
+        |
+        |   projection transform (4x4)
+        |
+        V
+    Clip Space............(xc,yc,zc,wc) wc=-ze, 
+        |
+        |   perspective division: (xn=xc/wc,yn=yc/wc,zn=zc/wc)
+        |
+        V
+    Normalized Device Coords............(x,y)Viewport Transformation  z Depth Transformation
+        |
+        |
+        |
+        V
+    Window Space............(x,y,z,w)
+    
+    
+    
+--- Vertexs --- 
+
+    Object
+        |
+        |   modelMatrix
+        |
+        V
+     World
+        |
+        |   viewMatrix
+        |
+        V
+      Eye
+        |
+        |   projectionMatrix
+        |
+        V
+      Clip
+        |
+        V
+      NDC i Window per Hardware
+
+
+--- Normals ---
+
+    Object ------
+        |       |
+        |       |
+        |       |
+        V       |
+     World      |   normalMatrix
+        |       |
+        |       |
+        |       |
+        V       |
+      Eye <------
+      
+      
+Clip: Retallat a la piràmide de visió. Es creen nous vèrtexs. Interpolació dels outs del VS.
+Viewport: Pas NDC -> Window Space 
+Cull: Backface culling --> Es projecta la normal + norma de la mà dreta --> si gira en sentit horari el fragment no es veu
+
+
+
+**** TEXTURES ****
+
+Textura = taula de 2 dimensions que emmagatzemen 3 canals (RGB) -> texel
+
+|t 
+|
+|
+|
+|_________s 
+
+2D => s,t     InferiorEsquerra = (0,0)     SuperiorDreta = (1,1)
+
+Mida de la textura ha de ser potència de 2
+
+Emmagatzemat
+    Reflectivitat
+        Kd -> color difús -> RGB
+        Ks -> especularitat -> RGB o gloss
+        A  -> opacitat -> A 
+    Geomètrica
+        (Nx,Ny,Nz) -> Normal map -> 3 canals
+        h   -> height map -> 1 canal
+
+
+Parametrització esfèrica (equirectangular)
+
+    psi (forquilla) = latitud (dist respecte equador)
+    phita (zero rallat) longitud (dist respecte Greenwich)
+    
+    x = cos(psi)sin(phita)
+    y = sin(psi)
+    z = cos(psi)cos(phita)
+    
+    
+**** FILTRAT ****
+
+texture (sampler,st) -> color 
+Preimatge d'un fragment 
+s(x,y)  { (s(x,y) , t(x,y) | (x,y) € fragment }         € -> pertany
+t(x,y)
+
+    dFdx(vtexCoord) -> ds/dx, dt/dx 
+    dFdy(vtexCoord) -> ds/dy, dt/dy
+    
+    magnification: derivades < 1  &  preimatge < texel      exemple: magnification du/dx = dv/dy = 1/2
+    minification: derivades > 1  &  preimatge > texel v
+
+
+
+
+
+
