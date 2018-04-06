@@ -19,9 +19,19 @@ void main()
     vec3 N = normalize(normalMatrix * normal);
     frontColor = vec4(N.z);
     vtexCoord = texCoord;
+
+    //VecPrima = Focus Llum (Object Space) - vertex (Object Space)
     vec4 vecPrima = (modelViewMatrixInverse * lightPosition) - vec4(vertex,1.0);
-    float d = sqrt(pow(vecPrima.x,2)+pow(vecPrima.y,2)+pow(vecPrima.z,2));
-    float w = clamp(1/(pow(d,n)),0,1);
-    vec4 vertexPrima= (1.0 - w) * vec4(vertex,1.0) + w * (modelViewMatrixInverse * lightPosition);
-    gl_Position = modelViewProjectionMatrix * vertexPrima;
+
+    float cX = vecPrima.x;
+    float cY = vecPrima.y;
+    float cZ = vecPrima.z;
+    //d es la distancia, es a dir, el modul del vector vecPrima 
+    float d = sqrt( pow(cX,2) + pow(cY,2) + pow(cZ,2) );
+    //w = 
+    float w = clamp(1/(pow(d,n)), 0, 1);
+
+    vec4 vtxPrima= (1.0 - w) * vec4(vertex,1.0) + w * (modelViewMatrixInverse * lightPosition);
+
+    gl_Position = modelViewProjectionMatrix * vtxPrima;
 }
