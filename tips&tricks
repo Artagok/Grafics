@@ -1,10 +1,10 @@
 **** ABANS DE L'EXAMEN POSAR AQUEST FITXER A DADES ****
 
 
-d(t) = A*sin(w*t+constant) 
+d(t) = A*sin(w*t+fase) 
   A = amplitud
    w = 2*PI*frequencia
    t = uniform float time
-   constant = o ens la donen o no n'hi ha. Un int 
+   fase(inicial) = o ens la donen o no n'hi ha. Un int 
   
 frame = int(time/slice) % 4; Per augmentar els fps, fem que el terme a l'esquerre del % sigui mes gran. +gran == +rapid el canvi
