@@ -2,9 +2,15 @@
 
 
 d(t) = A*sin(w*t+fase) 
-  A = amplitud
-   w = 2*PI*frequencia
-   t = uniform float time
-   fase(inicial) = o ens la donen o no n'hi ha. Un int 
+    A = amplitud
+    w = 2*PI*frequencia
+    t = uniform float time
+    fase(inicial) = o ens la donen o no n'hi ha. Un int 
+  
+  vertexAux.x += dist * normal.x;
+  vertexAux.y += dist * normal.y;
+  vertexAux.z += dist * normal.z;
+  multiplicar (dist * normal) component a component fara que s'expandexi i es contragui en comptes d'aplicar translació
+  
   
 frame = int(time/slice) % 4; Per augmentar els fps, fem que el terme a l'esquerre del % sigui mes gran. +gran == +rapid el canvi
