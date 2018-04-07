@@ -14,3 +14,8 @@ d(t) = A*sin(w*t+fase)
   
   
 frame = int(time/slice) % 4; Per augmentar els fps, fem que el terme a l'esquerre del % sigui mes gran. +gran == +rapid el canvi
+
+gl_FragCoord: (in vec4 gl_FragCoord)
+Available only in the fragment language, gl_FragCoord is an input variable that contains the window relative coordinate (x, y, z, 1/w)
+
+gl_Position — contains the position of the current vertex
