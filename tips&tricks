@@ -23,6 +23,9 @@ gl_Position — contains the position of the current vertex
 distance(boundingBoxMin, boundingBoxMax);	
     distance es una funcio predefinida, i en aquest cas fa el calcul de la diagonal de la capsa contenidora, ojo perque jo ho
              havia fet amb x,y. I estem en 3D, soc retra.
-    
-
+MATRIUS:
+    es llegeixen per columnes->   1,2,3         mat3( vec3(1,4,7),
+                                  4,5,6               vec3(4,5,6),
+                                  7,8,9               vec3(3,6,8)) 
+                                  
 
