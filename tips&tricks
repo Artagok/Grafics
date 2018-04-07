@@ -19,3 +19,10 @@ gl_FragCoord: (in vec4 gl_FragCoord)
 Available only in the fragment language, gl_FragCoord is an input variable that contains the window relative coordinate (x, y, z, 1/w)
 
 gl_Position — contains the position of the current vertex
+---------------------------------------------------------------------------------------------------------------------------------------
+distance(boundingBoxMin, boundingBoxMax);	
+    distance es una funcio predefinida, i en aquest cas fa el calcul de la diagonal de la capsa contenidora, ojo perque jo ho
+             havia fet amb x,y. I estem en 3D, soc retra.
+    
+
+
