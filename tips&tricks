@@ -42,14 +42,23 @@ normalize(vector)               == vector/length(vector)                //normal
 dFdx(value)                     //només al fragment     derivada respecte x
 dFdy(value)                     //només al fragment     derivada respecte y
 ________________________________________________________________________________________________________________________________________
-Diferenciar be quena ens demanen rotacions sobre eix del objecte(VERTEX(object space)) o de la camara(EYE SPACE)
+Diferenciar be quan ens demanen rotacions sobre eix del objecte(VERTEX(object space)) o de la camara(EYE SPACE)
 
     Escriu un vertex shader que, abans de transformar el vèrtex a clip space, el mogui una certa distància d(t)
     en la direcció de la SEVA NORMAL. -> Esta parlant de la normal del vertex, per tant ho hem de fer en OBJECT SPACE.
 
     Addicionalment, heu d’afegir una variable uniform bool rotate=true que indiqui si cal aplicar una
     rotació a les llums RESPECTE L'EIX Z DE LA CAMERA. -> Parla de la camera, per tant ho fem en EYE SPACE.
-    
+_________________________________________________________________________________________________________________________________________
+Escriu un vertex shader que apliqui un gradient de color al model segons la seva coordenada Y en
+COORDENADES NORMALITZADES DE DISPOSITIU (és a dir, després de la divisió de perspectiva).
+    //PRIMER HEM DE TENIR EL VERTEX EN CLIP SPACE
+     gl_Position = modelViewProjectionMatrix * vec4(vertex, 1.0);
+	    //ARA FEM LA DIVISIO DE LA PERSPECTIVA
+        //  y coordinates in NDC -1 .. 1
+	 float a = ((gl_Position.y/gl_Position.w)+1.0)/2.0;    //  a = 0...1 (el sabin volia que la a quedes entre 0 i 1,
+                                                                          no acabo d'entendre com ho calcula)
+
 
 
 
