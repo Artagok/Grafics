@@ -15,6 +15,8 @@ d(t) = A*sin(w*t+fase)
   
 frame = int(time/slice) % 4; Per augmentar els fps, fem que el terme a l'esquerre del % sigui mes gran. +gran == +rapid el canvi
 
+dot(v1, v2) = producte escalar dels dos vectors;
+
 gl_FragCoord: (in vec4 gl_FragCoord)
 Available only in the fragment language, gl_FragCoord is an input variable that contains the window relative coordinate (x, y, z, 1/w)
 
@@ -72,6 +74,8 @@ OJO amb quan normalitxem.
 	//aixo NO!
 	vec4 newV = normalize( (modelMatrix * vec4(vertex,1.0)));
     	gl_Position = modelViewProjectionMatrix * newV;	//ni aixo:gl_Position = modelViewProjectionMatrix * vec4(newV.xyz,1.0);
-	
+_________________________________________________________________________________________________________________________________________
+OJOJO quan estem treballant amb floats, intentar sempre escriure els numeros amb un decimal.
+	es: float a = 1/9. no em funcionava el programa, i a la que he posat 1.0/9. Pum!, pintava be.(compilava abans tambe)
 
 
