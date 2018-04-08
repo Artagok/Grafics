@@ -41,3 +41,15 @@ distance(A,B)                   == length(B-A)                          //distan
 normalize(vector)               == vector/length(vector)                //normalitza vec --> el seu modul es = 1 
 dFdx(value)                     //només al fragment     derivada respecte x
 dFdy(value)                     //només al fragment     derivada respecte y
+________________________________________________________________________________________________________________________________________
+Diferenciar be quena ens demanen rotacions sobre eix del objecte(VERTEX(object space)) o de la camara(EYE SPACE)
+
+    Escriu un vertex shader que, abans de transformar el vèrtex a clip space, el mogui una certa distància d(t)
+    en la direcció de la SEVA NORMAL. -> Esta parlant de la normal del vertex, per tant ho hem de fer en OBJECT SPACE.
+
+    Addicionalment, heu d’afegir una variable uniform bool rotate=true que indiqui si cal aplicar una
+    rotació a les llums RESPECTE L'EIX Z DE LA CAMERA. -> Parla de la camera, per tant ho fem en EYE SPACE.
+    
+
+
+
