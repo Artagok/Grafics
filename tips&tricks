@@ -58,7 +58,20 @@ COORDENADES NORMALITZADES DE DISPOSITIU (és a dir, després de la divisió de p
         //  y coordinates in NDC -1 .. 1
 	 float a = ((gl_Position.y/gl_Position.w)+1.0)/2.0;    //  a = 0...1 (el sabin volia que la a quedes entre 0 i 1,
                                                                           no acabo d'entendre com ho calcula)
-
-
+_________________________________________________________________________________________________________________________________________
+OJO amb quan normalitxem.
+  Nomes hem de normalitzar els eixos que utilitarem. En aquest cas:
+  	-multipliquem modelMatrix * vertex
+	-agafem els components .xyz del resultat
+	-i els normalitzem
+		i el vec3 resultant es el que substituim per vertex a gl_Position,
+		per molt que pensem que podiem normalitzar un vec4 directament
+	//aixo esta be	
+	vec3 newV = normalize( (modelMatrix * vec4(vertex,1.0)).xyz);
+    	gl_Position = modelViewProjectionMatrix * vec4(newV,1.0);
+	//aixo NO!
+	vec4 newV = normalize( (modelMatrix * vec4(vertex,1.0)));
+    	gl_Position = modelViewProjectionMatrix * newV;	//ni aixo:gl_Position = modelViewProjectionMatrix * vec4(newV.xyz,1.0);
+	
 
 
