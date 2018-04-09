@@ -36,6 +36,8 @@ Coordinate          .x  .y  .z  .w
 Color channel       .r  .g  .b  .a
 Texture             .s  .t  .p  .q
 
+fract(x)								//part fraccional de l'argument
+floor(x)								//troba l'enter mes proxim menor que o igual que el parmametre 
 clamp(x, minimum, maximum)      == min(max(x,minimum),maximum)          //returns the value of x constrained to the range minVal to maxVal
 mix(a,b,ratio)                  == (1-ratio)*a + ratio*b                //ponderar
 length(vec2(x,y))               == sqrt(x*x+y*y)                        //modul
