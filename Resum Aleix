@@ -1,0 +1,105 @@
+BasicLighting1 ---> iluminacio cutre en vert
+
+BasicLighting2 ---> iluminacio cutre en frag
+
+lighting1 -----> iluminacio per BLINN en vert
+
+lighting2 -----> iluminacio per PHONG en vert
+
+lighting3 -----> iluminacio per BLINN en frag
+
+lighting4 -----> iluminacio per PHONG en frag
+
+lighting5 -----> iluminacio PHONG frag  1=Eye  0=World
+
+basicTexture -----> posar una textura a la copa  
+
+animate-texture---- la textura es mou (canviant vtextCoord al VS)
+
+tiling ----- vtexCoord=texCoord * tiles; al VS
+
+magnet ----- deformacio vertex en el VS
+
+EXPLOSION ------ FER UN GIF (nomes amb una textura)
+
+Fire ------- Fer un gif amb textures diferents
+
+animate-vrtices1 ------ deformar vertex en funcio del temps VS   (oscila)
+
+animate-vrtices1 ------ deformar vertex en funcio del temps VS1  (onades)
+
+4lights ------ 4 luums de colors diferents que es mouen
+
+gradient1------ color en funcio pos obj
+
+gradient2 ------- color en funcio observador
+
+foldme ------- aplicar rotació en funcio del temps a un objecte
+
+oscillate ----- oscila en funcio del temps EYESPACE i WORLDSPACE
+
+autorotate ----- aplica rotació al vertex VS
+
+bouncing ------- rebota per la pantalla
+
+spherize ------ converteix el obj en una esfera (normalitza vertex al passarlo a gl_position)
+
+twist ----aplica rotacio en funcio del temps i de la pos objecte
+
+UVunfold ----- axafa la figura en 2D   VS
+
+CRT-display ------- discards en el FS   (en funcio de gl_FragCoord)
+
+profile ------ color groc als bordes   (en VS passa normali vertex a EYE i FS pinta en funcio de dot)
+
+calculant-la-normal ------ VS passa vertex en EYESPACE, FS aplica dFdx dFdy i cross
+
+checkerboard ------ fragColor en funcio del que sigui FS
+
+disco-shpere ------- Textura en rotacio + tuneado normals(dFdx dFdy) en el FS
+
+uncover ------- x=gl_Position.x/gl_Position.w+1; i en funcio del time en FS
+
+reverse1 ------- gl_Positiom.z = -gl_Position.z   VS
+
+reverse2 ------- gl_FragDepth=1-gl_FragCoord.z;   FS
+
+parallaxhallucination ------- fragColor = texture(map, vtexCoord+offset);
+
+
+
+
+
+
+
+
+
+    FLOOR agafa la part entera
+
+
+
+    textCoord s t
+
+    float maxY = boundingBoxMax.y;
+	float minY = boundingBoxMin.y;
+	float curY = vertex.y;
+	float a = (curY-minY)/(maxY-minY); 
+	
+	float r = distance(boundingBoxMin, boundingBoxMax);
+    float d = dot(v1,v2);
+	
+	  mat3 R=mat3(	vec3(cos(a), 0, -sin(a)),
+    		vec3(0, 1, 0),
+    		vec3(sin(a), 0, cos(a)));
+	
+	Matriu R per vector
+
+	
+	 fragColor =  texture(colorMap, vtexCoord);
+	 
+    //distancia del punt p a la recta A que passa pel punt origin	 
+        vec3 A=normalize(axis);
+        vec3 Q=origin+A*dot(P, A);
+        int x=int(length(P-Q)/slice);
+
+          vec3 F=(modelViewMatrixInverse*lightPosition).xyz; //on esta la llum en coord obj
